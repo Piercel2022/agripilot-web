@@ -7,6 +7,7 @@ import NotFoundPage from './NotFoundPage'
 import FarmsPage from './FarmsPage'
 import FieldsPage from './FieldsPage'
 import CropsPage from './CropsPage'
+import CampaignsPage from './CampaignsPage'
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
           {
             path: 'crops',
             element: <CropsPage />,
+          },
+          {
+            path: 'campaigns',
+            element: <CampaignsPage />,
           },
         ],
       },
