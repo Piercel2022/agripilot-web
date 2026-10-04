@@ -8,6 +8,8 @@ import FarmsPage from './FarmsPage'
 import FieldsPage from './FieldsPage'
 import CropsPage from './CropsPage'
 import CampaignsPage from './CampaignsPage'
+import InterventionsPage from './InterventionsPage'
+
 
 const router = createBrowserRouter([
   {
@@ -45,6 +47,10 @@ const router = createBrowserRouter([
           {
             path: 'campaigns',
             element: <CampaignsPage />,
+          },
+          {
+            path: 'interventions',
+            element: <InterventionsPage />,
           },
         ],
       },
