@@ -4,6 +4,7 @@ import ProtectedRoute from './ProtectedRoute'
 import DashboardPage from './DashboardPage'
 import LoginPage from './LoginPage'
 import NotFoundPage from './NotFoundPage'
+import FarmsPage from './FarmsPage'
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <DashboardPage />,
+          },
+          {
+            path: 'farms',
+            element: <FarmsPage />,
           },
         ],
       },
