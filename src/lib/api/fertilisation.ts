@@ -1,9 +1,9 @@
-import api from '@/lib/api/client'
+import api from './client'
 import type {
   CreateFertilisationPayload,
   Fertilisation,
   UpdateFertilisationPayload,
-} from '@/types/fertilisation'
+} from '../../types/fertilisation'
 
 export const getFertilisations = async (): Promise<Fertilisation[]> => {
   const response = await api.get<Fertilisation[]>('/fertilisations')
