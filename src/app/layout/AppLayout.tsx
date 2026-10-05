@@ -65,7 +65,7 @@ const navigation = [
       },
       {
         label: 'Fertilisation',
-        to: '/app/fertilisation',
+        to: '/app/fertilisations',
         icon: FlaskConical,
       },
       {
