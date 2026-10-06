@@ -75,7 +75,7 @@ const navigation = [
       },
       {
         label: 'Irrigation',
-        to: '/app/irrigation',
+        to: '/app/irrigations',
         icon: Droplets,
       },
       {
