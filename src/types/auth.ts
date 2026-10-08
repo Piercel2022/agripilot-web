@@ -25,3 +25,32 @@ export interface LoginResponse {
   tokenType: 'Bearer'
   user: AuthUser
 }
+
+export interface RegisterOrganizationRequest {
+  name: string
+  slug: string
+  email?: string
+  phone?: string
+}
+
+export interface RegisterRequest {
+  firstName: string
+  lastName: string
+  email: string
+  password: string
+  organizationId: string
+}
+
+export interface RegisterResponse {
+  user: AuthUser
+}
+
+export interface OrganizationResponse {
+  id: string
+  name: string
+  slug: string
+  email?: string
+  phone?: string
+  createdAt: string
+  updatedAt: string
+}
