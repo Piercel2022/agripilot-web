@@ -6,6 +6,7 @@ import {
   type ReactNode,
 } from 'react'
 import api from '../../lib/api/client'
+import { register as registerUser } from '../../lib/api/auth'
 import {
   getAccessToken,
   removeAccessToken,
@@ -15,6 +16,7 @@ import type {
   AuthUser,
   LoginRequest,
   LoginResponse,
+  RegisterRequest,
 } from '../../types/auth'
 import { AuthContext } from './auth-context'
 
@@ -35,6 +37,18 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   const login = useCallback(async (credentials: LoginRequest) => {
     const response = await api.post<LoginResponse>('/auth/login', credentials)
+
+    setAccessToken(response.data.accessToken)
+    setUser(response.data.user)
+  }, [])
+
+  const register = useCallback(async (payload: RegisterRequest) => {
+    await registerUser(payload)
+
+    const response = await api.post<LoginResponse>('/auth/login', {
+      email: payload.email,
+      password: payload.password,
+    })
 
     setAccessToken(response.data.accessToken)
     setUser(response.data.user)
@@ -66,9 +80,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
       isAuthenticated: user !== null,
       isLoading,
       login,
+      register,
       logout,
     }),
-    [user, isLoading, login, logout],
+    [user, isLoading, login, register, logout],
   )
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
