@@ -14,6 +14,7 @@ import PhytosanitaryPage from './PhytosanitaryPage'
 import IrrigationPage from './IrrigationPage'
 import ObservationsPage from './ObservationsPage'
 import HarvestsPage from './HarvestsPage'
+import FieldOperationsPage from './FieldOperationsPage'
 
 const router = createBrowserRouter([
   {
@@ -66,6 +67,7 @@ const router = createBrowserRouter([
           },
           { path: 'observations', element: <ObservationsPage /> },
           { path: 'harvests', element: <HarvestsPage /> },
+          { path: 'field-operations', element: <FieldOperationsPage /> },
         ],
       },
     ],

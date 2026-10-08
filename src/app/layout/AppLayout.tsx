@@ -1,7 +1,7 @@
 import {
   BarChart3,
   Bell,
-  CalendarDays,
+  ClipboardCheck,
   ChevronDown,
   ClipboardList,
   Droplets,
@@ -91,7 +91,7 @@ const navigation = [
       {
         label: 'Opérations terrain',
         to: '/app/field-operations',
-        icon: CalendarDays,
+        icon: ClipboardCheck,
       },
     ],
   },
