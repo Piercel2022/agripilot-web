@@ -12,6 +12,8 @@ import InterventionsPage from './InterventionsPage'
 import FertilisationPage from './FertilisationPage'
 import PhytosanitaryPage from './PhytosanitaryPage'
 import IrrigationPage from './IrrigationPage'
+import ObservationsPage from './ObservationsPage'
+import HarvestsPage from './HarvestsPage'
 
 const router = createBrowserRouter([
   {
@@ -62,6 +64,8 @@ const router = createBrowserRouter([
           { path: 'irrigations',
             element: <IrrigationPage />,
           },
+          { path: 'observations', element: <ObservationsPage /> },
+          { path: 'harvests', element: <HarvestsPage /> },
         ],
       },
     ],
