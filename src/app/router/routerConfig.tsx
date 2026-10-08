@@ -1,4 +1,4 @@
-import { Navigate, createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter } from 'react-router-dom'
 import AppLayout from '../layout/AppLayout'
 import ProtectedRoute from './ProtectedRoute'
 import DashboardPage from './DashboardPage'
@@ -15,11 +15,12 @@ import IrrigationPage from './IrrigationPage'
 import ObservationsPage from './ObservationsPage'
 import HarvestsPage from './HarvestsPage'
 import FieldOperationsPage from './FieldOperationsPage'
+import HomePage from './HomePage'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Navigate to="/login" replace />,
+     element: <HomePage />,
   },
   {
     path: '/login',
