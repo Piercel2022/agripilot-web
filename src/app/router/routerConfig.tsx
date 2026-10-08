@@ -16,11 +16,16 @@ import ObservationsPage from './ObservationsPage'
 import HarvestsPage from './HarvestsPage'
 import FieldOperationsPage from './FieldOperationsPage'
 import HomePage from './HomePage'
+import RegisterPage from './RegisterPage'
 
 const router = createBrowserRouter([
   {
     path: '/',
      element: <HomePage />,
+  },
+  {
+  path: '/register',
+  element: <RegisterPage />,
   },
   {
     path: '/login',
