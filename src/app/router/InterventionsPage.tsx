@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState, type FormEvent } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import {
   CalendarDays,
   CheckCircle2,
@@ -74,6 +75,8 @@ function formatDate(value?: string) {
 }
 
 export default function InterventionsPage() {
+  const location = useLocation()
+  const navigate = useNavigate()
   const [interventions, setInterventions] = useState<Intervention[]>([])
   const [campaigns, setCampaigns] = useState<Campaign[]>([])
   const [loading, setLoading] = useState(true)
@@ -83,12 +86,19 @@ export default function InterventionsPage() {
   const [statusFilter, setStatusFilter] = useState<'all' | InterventionStatus>(
     'all',
   )
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(
+    location.pathname === '/app/interventions/new',
+  )
   const [editingIntervention, setEditingIntervention] =
     useState<Intervention | null>(null)
   const [deletingId, setDeletingId] = useState<string | null>(null)
   const [form, setForm] = useState(INITIAL_FORM)
   const [formError, setFormError] = useState('')
+  const selectedCampaignId =
+    form.campaignId ||
+    (location.pathname === '/app/interventions/new'
+      ? campaigns[0]?.id ?? ''
+      : '')
 
   useEffect(() => {
     let isMounted = true
@@ -196,6 +206,9 @@ export default function InterventionsPage() {
     setIsModalOpen(false)
     setEditingIntervention(null)
     setFormError('')
+    if (location.pathname === '/app/interventions/new') {
+      navigate('/app/interventions')
+    }
   }
 
   function updateField<K extends keyof typeof form>(
@@ -213,7 +226,7 @@ export default function InterventionsPage() {
       return 'Le nom de l’intervention est obligatoire.'
     }
 
-    if (!form.campaignId) {
+    if (!selectedCampaignId) {
       return 'La campagne est obligatoire.'
     }
 
@@ -266,7 +279,7 @@ export default function InterventionsPage() {
           completedDate: form.completedDate || undefined,
           status: form.status,
           notes: form.notes.trim() || undefined,
-          campaignId: form.campaignId,
+          campaignId: selectedCampaignId,
         }
 
         const created = await createIntervention(payload)
@@ -517,7 +530,7 @@ export default function InterventionsPage() {
 
               <Field label="Campagne" required>
                 <select
-                  value={form.campaignId}
+                  value={selectedCampaignId}
                   onChange={(event) =>
                     updateField('campaignId', event.target.value)
                   }
