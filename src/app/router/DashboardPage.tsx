@@ -308,9 +308,10 @@ export default function DashboardPage() {
   }, [])
 
   const totalSurface = useMemo(() => {
-    return data.fields.reduce((total, field) => {
-      return total + field.areaHectares
-    }, 0)
+  return data.fields.reduce((total, field) => {
+    const area = Number(field.areaHectares)
+    return total + (Number.isFinite(area) ? area : 0)
+  }, 0)
   }, [data.fields])
 
   const activeCrops = useMemo(() => {
