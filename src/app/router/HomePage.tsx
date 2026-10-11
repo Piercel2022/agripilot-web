@@ -20,66 +20,77 @@ import { Link } from 'react-router-dom'
 const features = [
   {
     icon: Tractor,
+    slug: 'exploitations',
     title: 'Exploitations',
     description:
       'Centralisez vos exploitations, leurs informations et leur organisation.',
   },
   {
     icon: Map,
+    slug: 'parcelles',
     title: 'Parcelles',
     description:
       'Visualisez vos parcelles et gardez une vision claire de vos surfaces agricoles.',
   },
   {
     icon: Sprout,
+    slug: 'cultures',
     title: 'Cultures',
     description:
       'Suivez vos cultures, leurs variétés, leurs périodes et leur état.',
   },
   {
     icon: Wheat,
+    slug: 'campagnes',
     title: 'Campagnes',
     description:
       'Structurez chaque campagne agricole et rattachez les opérations au bon contexte.',
   },
   {
     icon: ClipboardList,
+    slug: 'interventions',
     title: 'Interventions',
     description:
       'Planifiez et suivez les interventions réalisées sur vos parcelles.',
   },
   {
     icon: FlaskConical,
+    slug: 'fertilisation',
     title: 'Fertilisation',
     description:
       'Gardez une trace structurée des apports et des opérations de fertilisation.',
   },
   {
     icon: Leaf,
+    slug: 'phytosanitaire',
     title: 'Phytosanitaire',
     description:
       'Centralisez le suivi des interventions phytosanitaires.',
   },
   {
     icon: Droplets,
+    slug: 'irrigation',
     title: 'Irrigation',
     description:
       'Suivez les opérations d’irrigation et leur avancement.',
   },
   {
     icon: Bell,
+    slug: 'observations',
     title: 'Observations',
     description:
       'Enregistrez les observations terrain et identifiez les situations à surveiller.',
   },
   {
     icon: Wheat,
+    slug: 'recoltes',
     title: 'Récoltes',
     description:
       'Enregistrez vos récoltes, quantités, unités et rendements.',
   },
   {
     icon: Tractor,
+    slug: 'operations-terrain',
     title: 'Opérations terrain',
     description:
       'Suivez l’exécution réelle des opérations directement dans votre pilotage.',
@@ -174,7 +185,7 @@ function HomePage() {
             </Link>
 
             <Link
-              to="/login"
+              to="/register"
               className="rounded-lg bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700"
             >
               Commencer
@@ -232,7 +243,7 @@ function HomePage() {
                 </Link>
 
                 <Link
-                  to="/login"
+                  to="/register"
                   className="rounded-lg bg-emerald-600 px-3 py-2.5 text-center text-sm font-semibold text-white"
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -254,18 +265,18 @@ function HomePage() {
               </div>
 
               <h1 className="mt-6 max-w-3xl text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-                Pilotez votre exploitation agricole depuis un seul endroit.
+                Toutes vos parcelles, vos cultures et vos opérations agricoles réunies dans un seul outil.
               </h1>
 
               <p className="mt-6 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
-                Centralisez vos exploitations, parcelles, cultures, campagnes
-                et opérations pour garder une vision claire de votre activité
-                agricole.
+                Organisez vos exploitations, suivez vos parcelles et vos cultures,
+                planifiez vos campagnes et retrouvez vos interventions dans un
+                espace de travail conçu pour le terrain.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link
-                  to="/login"
+                  to="/register"
                   className="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700"
                 >
                   Commencer avec AgriPilot
@@ -426,22 +437,25 @@ function HomePage() {
                 const Icon = feature.icon
 
                 return (
-                  <article
+                  <Link
                     key={feature.title}
-                    className="rounded-2xl border border-slate-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-emerald-200 hover:shadow-lg hover:shadow-slate-900/5"
+                    to={`/fonctionnalites/${feature.slug}`}
+                    className="block"
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
-                      <Icon className="h-5 w-5" />
-                    </div>
+                    <article className="h-full rounded-2xl border border-slate-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-emerald-200 hover:shadow-lg hover:shadow-slate-900/5">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
+                        <Icon className="h-5 w-5" />
+                      </div>
 
-                    <h3 className="mt-4 text-base font-bold text-slate-900">
-                      {feature.title}
-                    </h3>
+                      <h3 className="mt-4 text-base font-bold text-slate-900">
+                        {feature.title}
+                      </h3>
 
-                    <p className="mt-2 text-sm leading-6 text-slate-600">
-                      {feature.description}
-                    </p>
-                  </article>
+                      <p className="mt-2 text-sm leading-6 text-slate-600">
+                        {feature.description}
+                      </p>
+                    </article>
+                  </Link>
                 )
               })}
             </div>
@@ -581,7 +595,7 @@ function HomePage() {
 
             <div className="mt-7">
               <Link
-                to="/login"
+                to="/register"
                 className="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700"
               >
                 Commencer avec AgriPilot
