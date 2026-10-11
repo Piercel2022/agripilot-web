@@ -615,7 +615,7 @@ export default function FeaturePage() {
                 </p>
                 <Link
                   to="/register"
-                  className="mt-7 inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-semibold text-emerald-950 transition hover:bg-emerald-50"
+                  className="mt-7 inline-flex items-center gap-2 rounded-lg bg-blue px-5 py-3 text-sm font-semibold text-emerald-950 transition hover:bg-emerald-50"
                 >
                   Créer mon espace
                   <ArrowRight className="h-4 w-4" />
