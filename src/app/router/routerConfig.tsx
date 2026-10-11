@@ -17,11 +17,16 @@ import HarvestsPage from './HarvestsPage'
 import FieldOperationsPage from './FieldOperationsPage'
 import HomePage from './HomePage'
 import RegisterPage from './RegisterPage'
+import FeaturePage from './FeaturePage'
 
 const router = createBrowserRouter([
   {
     path: '/',
      element: <HomePage />,
+  },
+  {
+    path: '/fonctionnalites/:slug',
+    element: <FeaturePage />,
   },
   {
   path: '/register',
@@ -60,6 +65,10 @@ const router = createBrowserRouter([
             element: <CampaignsPage />,
           },
           {
+            path: 'interventions/new',
+            element: <InterventionsPage />,
+          },
+          {
             path: 'interventions',
             element: <InterventionsPage />,
           },
@@ -67,13 +76,21 @@ const router = createBrowserRouter([
             path: 'fertilisations',
             element: <FertilisationPage />,
           },
-          { path: 'phytosanitary',element: <PhytosanitaryPage />},
+          { path: 'phytosanitary',
+            element: <PhytosanitaryPage />,
+          },
           { path: 'irrigations',
             element: <IrrigationPage />,
           },
-          { path: 'observations', element: <ObservationsPage /> },
-          { path: 'harvests', element: <HarvestsPage /> },
-          { path: 'field-operations', element: <FieldOperationsPage /> },
+          { path: 'observations',
+            element: <ObservationsPage />,
+          },
+          { path: 'harvests',
+            element: <HarvestsPage />,
+          },
+          { path: 'field-operations',
+            element: <FieldOperationsPage />,
+          },
         ],
       },
     ],
